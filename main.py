@@ -8,8 +8,6 @@ bot = Bot('5723569322:AAHb4xdvy3mXQrY8h8CgEs2ZXIA1NCVs5_U')
 dp = Dispatcher(bot)
 
 
-#aahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-
 kb = ReplyKeyboardMarkup(resize_keyboard=True)
 b1 = KeyboardButton('/w_p')
 b2 = KeyboardButton('/spiegel')
