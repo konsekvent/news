@@ -145,9 +145,30 @@ async def polska(message: types.Message):
     response = requests.get(link).text
     soup = BeautifulSoup(response, 'lxml')
 
-    block_all = soup.find('div', class_='zsectionTiles__box').find_all('a')
+    block_1 = soup.find('a', id='LinkArea:BoxOpMT').text
+    block_1_link = soup.find('a', id='LinkArea:BoxOpMT').get('href')
 
-    print(block_all)
+    block_2 = soup.find('a', id='LinkArea:BoxOpImg1').text
+    block_2_link = soup.find('a', id='LinkArea:BoxOpImg1').get('href')
+
+    block_3 = soup.find('a', id='LinkArea:BoxOpImg3').text
+    block_3_link = soup.find('a', id='LinkArea:BoxOpImg3').get('href')
+
+    block_4 = soup.find('a', id='LinkArea:BoxOpImg4').text
+    block_4_link = soup.find('a', id='LinkArea:BoxOpImg4').get('href')
+
+    block_5 = soup.find('a', id='LinkArea:BoxOpImg5').text
+    block_5_link = soup.find('a', id='LinkArea:BoxOpImg5').get('href')
+
+
+    translator = Translator(from_lang='pl', to_lang='ru')
+    transl_block_1 = translator.translate(block_1)
+    transl_block_2 = translator.translate(block_2)
+    transl_block_3 = translator.translate(block_3)
+    transl_block_4 = translator.translate(block_4)
+    transl_block_5 = translator.translate(block_5)
+    await message.answer(text = f"{transl_block_1} \n {block_1_link} \n\n {transl_block_2} \n {block_2_link} \n\n {transl_block_3} \n\n {block_3_link} \n\n {transl_block_4} \n\n {block_4_link} \n\n {transl_block_5} \n\n {block_5_link}", reply_markup=kb)
+
 
 def main():
     menu()
